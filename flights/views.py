@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse, JsonResponse
-from .models import Flight
+from .models import Flight, Airport
 
 
 def flight_list(request):
@@ -14,3 +14,16 @@ def flight_list(request):
         }
         flights.append(dictionary)
     return HttpResponse(flights)
+
+
+def airport_list(request):
+    airport = Airport.objects.all()
+    airports = []
+    for item in airport:
+        dictionary = {
+            "name": item.name,
+            "number": item.No,
+            "city": item.city,
+        }
+        airports.append(dictionary)
+    return HttpResponse(airports)
