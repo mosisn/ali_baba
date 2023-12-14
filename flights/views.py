@@ -3,10 +3,14 @@ from .models import Flight
 
 
 def flight_list(request):
-    flight_info = {
-        'name': 'airbus',
-        'number': '513',
-        'capacity': 255,
-        'price': 650000.0
+    flight = Flight.objects.all()
+    flights = []
+    for item in flight:
+        dictionary = {
+            "name": item.name,
+            "origin": item.origin.name,
+            "destination": item.destination.name,
+            "price": item.price
         }
-    return JsonResponse(flight_info)
+        flights.append(dictionary)
+    return HttpResponse(flights)
