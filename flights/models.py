@@ -19,7 +19,8 @@ class Airport(models.Model):
 
 
 class Flight(models.Model):
-    origin = models.ForeignKey(Airport, on_delete=models.CASCADE, default=None)
+    origin = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='origin')
+    destination = models.ForeignKey(Airport, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     number = models.CharField(max_length=10, verbose_name='code')
     capacity = models.IntegerField()

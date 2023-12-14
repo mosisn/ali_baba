@@ -1,4 +1,5 @@
 from django.http.response import HttpResponse, JsonResponse
+from .models import Flight
 
 
 def flight_list(request):
