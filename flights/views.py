@@ -5,17 +5,12 @@ from django.shortcuts import render
 
 def flight_list(request):
     flight = Flight.objects.all()
-    flights = []
-    for item in flight:
-        dictionary = {
-            "name": item.name,
-            "origin": item.origin.name,
-            "destination": item.destination.name,
-            "price": item.price
-        }
-        flights.append(dictionary)
+    flights = {
+        'flights': flight
+    }
+
     # return HttpResponse(flights)
-    return render(request, 'flights/list.html')
+    return render(request, 'flights/list.html', context=flights)
 
 
 def airport_list(request):

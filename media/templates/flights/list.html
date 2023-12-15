@@ -6,7 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 style="color: red"
-
+    <h1 style="color: red;">Here is my Flight list page!</h1>
+    {% for item in flights %}
+        <hr>
+        <p>Origin: {{ item.origin }}</p>
+        <p>Destination: {{ item.destination }}</p>
+        <p>Time:{{ item.time }}</p>
+        <p style="color: blue;">Price: {{ item.price }}</p>
+        <p>Capacity: {{ item.capacity}}
+    {% endfor %}
 </body>
 </html>
