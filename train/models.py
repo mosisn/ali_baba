@@ -5,7 +5,11 @@ from django.db.models import CharField
 class TrainStation(models.Model):
     name = models.CharField(max_length=255)
     No = models.CharField(max_length=10)
-    city = models.CharField(max_length=255)
+    city = models.CharField(max_length=255, choices=[('TEH', 'Tehran'),
+                                                     ('ISF', 'Isfahan'),
+                                                     ('MSH', 'Mashhad'),
+                                                     ('KRJ', 'Karaj'),
+                                                     ('DEZ', 'Dezful'),])
     address = models.TextField(max_length=500)
     phone_number = models.CharField(max_length=12)
     open_time = models.TimeField()
