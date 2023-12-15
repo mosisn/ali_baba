@@ -1,5 +1,6 @@
 from django.http.response import HttpResponse, JsonResponse
 from .models import Flight, Airport
+from django.shortcuts import render
 
 
 def flight_list(request):
@@ -13,7 +14,8 @@ def flight_list(request):
             "price": item.price
         }
         flights.append(dictionary)
-    return HttpResponse(flights)
+    # return HttpResponse(flights)
+    return render(request, 'flights/list.html')
 
 
 def airport_list(request):
@@ -26,4 +28,6 @@ def airport_list(request):
             "city": item.city,
         }
         airports.append(dictionary)
-    return HttpResponse(airports)
+    # return HttpResponse(airports)
+    return render(request, 'flights/list2.html')
+
