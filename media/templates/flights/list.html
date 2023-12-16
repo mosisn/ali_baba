@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Alibaba</title>
 </head>
 <body>
-    <h1 style="color: red;">Here is my Flight list page!</h1>
+    <h1>Here is my Flight list page!</h1>
     {% for item in flights %}
         <hr>
-        <p>Origin: {{ item.origin }}</p>
-        <p>Destination: {{ item.destination }}</p>
-        <p>Time:{{ item.time }}</p>
-        <p style="color: blue;">Price: {{ item.price }}</p>
-        <p>Capacity: {{ item.capacity}}
+        <p style="color: blue;">Origin: {{ item.origin }}</p>
+        <p style="color: red;">Destination: {{ item.destination }}</p>
+        <p style="color: blue;">Time:{{ item.time }}</p>
+        <p style="color: red;">Price: {{ item.price }}</p>
+        <p style="color: blue;">Capacity: {{ item.capacity}}
     {% endfor %}
 </body>
 </html>
