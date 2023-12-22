@@ -27,7 +27,7 @@ class Train(models.Model):
     origin = models.ForeignKey(TrainStation, on_delete=models.CASCADE, related_name='origin')
     destination = models.ForeignKey(TrainStation, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
-    number = models.CharField(max_length=10, verbose_name='code')
+    number = models.CharField(unique= True, max_length=10, verbose_name='code')
     capacity = models.IntegerField()
     price = models.FloatField(help_text='price in Rial')
     time = models.DateTimeField()
