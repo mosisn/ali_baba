@@ -1,5 +1,7 @@
 from django.http.response import HttpResponse, JsonResponse
 from .models import Train, TrainStation
+from django.shortcuts import render
+from datetime import datetime
 
 
 def train_list(request):
@@ -27,3 +29,12 @@ def train_station_list(request):
         }
         train_stations.append(dictionary)
     return JsonResponse(train_stations, safe=False)
+
+def train_filter(request):
+    today = datetime.today().date()
+    trains = Train.objects.filter(origin__city='TEH')
+    t_list = {
+        'trains' : trains
+    }
+    return render(request, 'trains/list.html', context=t_list)
+

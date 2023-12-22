@@ -26,3 +26,11 @@ def airport_list(request):
     # return HttpResponse(airports)
     return render(request, 'flights/list2.html')
 
+def test_list(request):
+    flight = Flight.objects.filter()
+    flights = {
+        'flights': flight
+    }
+
+    # return HttpResponse(flights)
+    return render(request, 'flights/list.html', context=flights)

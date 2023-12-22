@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import CharField
+from datetime import datetime
 
 
 class TrainStation(models.Model):
@@ -14,9 +15,9 @@ class TrainStation(models.Model):
     phone_number = models.CharField(max_length=12)
     open_time = models.TimeField()
     close_time = models.TimeField()
-    #
-    # def __str__(self) -> str:
-    #     return f'{self.name} - {self.No}'
+    
+    def __str__(self) -> str:
+        return f'{self.name}'
 
     # class Meta:
     #     verbose_name = 'Kelaasor Airports'
@@ -29,9 +30,10 @@ class Train(models.Model):
     number = models.CharField(max_length=10, verbose_name='code')
     capacity = models.IntegerField()
     price = models.FloatField(help_text='price in Rial')
-    #
-    # def __str__(self) -> str:
-    #     return f'{self.name} - {self.number}'
+    time = models.DateTimeField()
+    
+    def __str__(self) -> str:
+        return f'{self.name}'
 
     # class Meta:
     #     verbose_name = 'Kelaasor Flights'
