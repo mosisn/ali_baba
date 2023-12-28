@@ -2,6 +2,8 @@ from django.http.response import HttpResponse, JsonResponse
 from .models import Train, TrainStation
 from django.shortcuts import render
 from datetime import datetime
+from .serializers import TrainStationSerializer
+from rest_framework import generics
 
 
 def train_list(request):
@@ -16,7 +18,6 @@ def train_list(request):
         }
         trains.append(dictionary)
     return JsonResponse(trains, safe=False)
-
 
 def train_station_list(request):
     train_station = TrainStation.objects.all()
@@ -46,7 +47,6 @@ def train_past(request):
     }
     return render(request, 'trains/list_past.html', context=t_list)
 
-
 def train_page (request, code):
     try:
         trains = Train.objects.get(number= code)
@@ -56,3 +56,27 @@ def train_page (request, code):
         'trains' : trains
     }
     return render(request, 'trains/train_page.html', context=t_list)
+
+class TrainStationList(generics.ListAPIView):
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
+
+class CreateTrainStation(generics.CreateAPIView):
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
+
+class TrainStationView(generics.ListCreateAPIView):
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
+
+class TrainStationdelete(generics.DestroyAPIView):
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
+
+class TrainStationRetrieve(generics.RetrieveAPIView):
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
+
+class TrainStationUpdate(generics.UpdateAPIView):
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
