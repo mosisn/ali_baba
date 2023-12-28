@@ -4,7 +4,7 @@ from .views import (train_list, train_station_list,
                     train_past, TrainStationList,
                     CreateTrainStation, TrainStationView,
                     TrainStationdelete, TrainStationRetrieve,
-                    TrainStationUpdate)
+                    TrainStationUpdate, TrainStationView2)
 urlpatterns = [
     path('list', train_list, name='train_list'),
     path('list2', train_station_list, name='train_station_list'),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('trainstation-delete/<int:pk>', TrainStationdelete.as_view(), name='TrainStationdelete'),
     path('trainstation-retrieve/<int:pk>', TrainStationRetrieve.as_view(), name='TrainStationRetrieve'), 
     path('trainstation-update/<int:pk>', TrainStationUpdate.as_view(), name='TrainStationRetrieve'),
+    path('trainstation2/<int:pk>', TrainStationView2.as_view(), name='TrainStationView2'),
     path('<str:code>', train_page, name='train_page'),
 ]

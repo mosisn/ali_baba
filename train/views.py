@@ -80,3 +80,8 @@ class TrainStationRetrieve(generics.RetrieveAPIView):
 class TrainStationUpdate(generics.UpdateAPIView):
     queryset = TrainStation.objects.all()
     serializer_class = TrainStationSerializer
+
+class TrainStationView2(generics.RetrieveUpdateDestroyAPIView):
+    #does the work of  all above three classes
+    queryset = TrainStation.objects.all()
+    serializer_class = TrainStationSerializer
